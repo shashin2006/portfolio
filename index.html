@@ -5,133 +5,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shashin R | Full Stack Developer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3498db',
+            secondary: '#2c3e50',
+            accent: '#e74c3c',
+            light: '#ecf0f1',
+            dark: '#2c3e50',
+            text: '#333',
+            textLight: '#777',
+          },
+          fontFamily: {
+            sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .section-title {
+        @apply relative text-center mb-12 text-4xl font-normal text-secondary;
+      }
+      .section-title::after {
+        content: '';
+        @apply absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-1 bg-primary;
+      }
+      .btn {
+        @apply inline-block px-8 py-3 bg-primary text-white border-none rounded-md no-underline font-semibold transition-all duration-300 ease-in-out cursor-pointer;
+      }
+      .btn:hover {
+        @apply bg-[#2980b9] -translate-y-[3px] shadow-md;
+      }
+      .btn.secondary {
+        @apply bg-secondary;
+      }
+      .btn.secondary:hover {
+        @apply bg-[#1a252f];
+      }
+      .progress-bar {
+        @apply h-2 bg-gray-100 rounded overflow-hidden;
+      }
+      .progress {
+        @apply h-full bg-primary rounded;
+      }
+      .timeline::before {
+        content: '';
+        @apply absolute w-0.5 bg-primary top-0 bottom-0 left-1/2 -ml-px;
+      }
+      .timeline-date {
+        @apply px-4 py-2 bg-primary text-white rounded-full font-semibold absolute top-5;
+      }
+      .project-tech span {
+        @apply bg-gray-100 px-3 py-1 rounded-full text-xs text-textLight;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="font-sans leading-relaxed text-text bg-gray-50">
   <!-- Navigation -->
   <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="#" class="logo">Shashin<span> R</span></a>
-        <ul class="nav-links">
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+    <nav class="navbar fixed top-0 w-full bg-white shadow-md z-50 py-5 transition-all duration-300 ease-in-out">
+      <div class="container mx-auto px-5 max-w-6xl flex justify-between items-center">
+        <a href="#" class="logo text-2xl font-bold text-secondary no-underline">Shashin<span class="text-primary"> R</span></a>
+        <ul class="nav-links hidden md:flex list-none gap-2">
+          <li><a href="#home" class="active px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">Home</a></li>
+          <li><a href="#about" class="px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">About</a></li>
+          <li><a href="#skills" class="px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">Skills</a></li>
+          <li><a href="#projects" class="px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">Projects</a></li>
+          <li><a href="#experience" class="px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">Experience</a></li>
+          <li><a href="#contact" class="px-5 py-2 no-underline font-semibold text-text hover:text-primary transition-all duration-300 ease-in-out">Contact</a></li>
         </ul>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="hamburger md:hidden cursor-pointer">
+          <span class="block w-6 h-0.5 bg-secondary my-1 transition-all duration-300 ease-in-out"></span>
+          <span class="block w-6 h-0.5 bg-secondary my-1 transition-all duration-300 ease-in-out"></span>
+          <span class="block w-6 h-0.5 bg-secondary my-1 transition-all duration-300 ease-in-out"></span>
         </div>
       </div>
     </nav>
   </header>
 
-  
   <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>SHASHIN R</h1>
-        <h2>Emerging Full Stack Developer & AI Enthusiast</h2>
-        <p>Hardworking individual with good leadership qualities. Computer Science and Engineering student passionate about developing knowledge and skills with enriching technology.</p>
-        <div class="hero-buttons">
+  <section id="home" class="hero bg-gradient-to-br from-[#f5f7fa] to-[#c3cfe2] pt-36 pb-20 min-h-screen flex items-center">
+    <div class="container mx-auto px-5 max-w-6xl flex flex-col md:flex-row items-center">
+      <div class="hero-content flex-1 mb-12 md:mb-0 md:pr-12 text-center md:text-left">
+        <h1 class="text-5xl md:text-6xl mb-5 text-secondary">SHASHIN R</h1>
+        <h2 class="text-2xl md:text-3xl mb-5 text-primary font-normal">Emerging Full Stack Developer & AI Enthusiast</h2>
+        <p class="text-lg mb-8 text-textLight max-w-2xl mx-auto md:mx-0">Hardworking individual with good leadership qualities. Computer Science and Engineering student passionate about developing knowledge and skills with enriching technology.</p>
+        <div class="hero-buttons flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
           <a href="#contact" class="btn">Contact Me</a>
           <a href="SHASHIN_RESUME_ORI.pdf" download class="btn secondary">Download Resume</a>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="profile.jpg" alt="Shashin R">
-      </div>
+      
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
+  <section id="about" class="about py-20">
+    <div class="container mx-auto px-5 max-w-6xl">
       <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>I am a self-motivated and hardworking individual with good leadership qualities. Currently pursuing my Bachelor's in Computer Science and Engineering at RMK College of Engineering and Technology (2023-2027).</p>
-          <p>As an AI technology enthusiast and quick learner, I'm passionate about full stack development and machine learning applications.</p>
-          <div class="personal-info">
-            <div>
-              <span><i class="fas fa-phone"></i> Phone:</span>
+      <div class="about-content flex flex-col md:flex-row items-center gap-12">
+        <div class="about-text flex-1">
+          <p class="mb-5 text-lg leading-loose">I am a self-motivated and hardworking individual with good leadership qualities. Currently pursuing my Bachelor's in Computer Science and Engineering at RMK College of Engineering and Technology (2023-2027).</p>
+          <p class="mb-5 text-lg leading-loose">As an AI technology enthusiast and quick learner, I'm passionate about full stack development and machine learning applications.</p>
+          <div class="personal-info my-8">
+            <div class="flex mb-4">
+              <span class="font-semibold min-w-[120px] text-secondary"><i class="fas fa-phone text-primary mr-2"></i> Phone:</span>
               <span>+91 9043319174</span>
             </div>
-            <div>
-              <span><i class="fas fa-envelope"></i> Email:</span>
+            <div class="flex mb-4">
+              <span class="font-semibold min-w-[120px] text-secondary"><i class="fas fa-envelope text-primary mr-2"></i> Email:</span>
               <span>shashinrajkumar@gmail.com</span>
             </div>
-            <div>
-              <span><i class="fab fa-linkedin"></i> LinkedIn:</span>
+            <div class="flex mb-4">
+              <span class="font-semibold min-w-[120px] text-secondary"><i class="fab fa-linkedin text-primary mr-2"></i> LinkedIn:</span>
               <span>linkedin.com/in/shashin-r-985a2a321</span>
             </div>
-            <div>
-              <span><i class="fas fa-graduation-cap"></i> Education:</span>
+            <div class="flex mb-4">
+              <span class="font-semibold min-w-[120px] text-secondary"><i class="fas fa-graduation-cap text-primary mr-2"></i> Education:</span>
               <span>B.E. Computer Science & Engineering</span>
             </div>
           </div>
         </div>
-        <div class="about-image">
-          <img src="profile.jpg" alt="Shashin R">
+        <div class="about-image flex-1 mt-12 md:mt-0 text-center">
+          <img src="profile.jpg" alt="Shashin R" class="max-w-full rounded-lg shadow-lg">
         </div>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="skills">
-    <div class="container">
+  <section id="skills" class="skills py-20">
+    <div class="container mx-auto px-5 max-w-6xl">
       <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Frontend Development</h3>
-          <div class="skill-item">
-            <span>HTML5</span>
+      <div class="skills-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="skill-category bg-white p-8 rounded-lg shadow-sm">
+          <h3 class="text-xl mb-5 text-secondary">Frontend Development</h3>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">HTML5</span>
             <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>CSS3</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">CSS3</span>
             <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>JavaScript</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">JavaScript</span>
             <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
           </div>
         </div>
         
-        <div class="skill-category">
-          <h3>Programming Languages</h3>
-          <div class="skill-item">
-            <span>Java</span>
+        <div class="skill-category bg-white p-8 rounded-lg shadow-sm">
+          <h3 class="text-xl mb-5 text-secondary">Programming Languages</h3>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">Java</span>
             <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>C++</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">C++</span>
             <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
           </div>
         </div>
 
-        <div class="skill-category">
-          <h3>Other Skills</h3>
-          <div class="skill-item">
-            <span>SQL</span>
+        <div class="skill-category bg-white p-8 rounded-lg shadow-sm">
+          <h3 class="text-xl mb-5 text-secondary">Other Skills</h3>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">SQL</span>
             <div class="progress-bar"><div class="progress" style="width: 60%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>AI/ML Basics</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">AI/ML Basics</span>
             <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>Project Management</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">Project Management</span>
             <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
           </div>
-          <div class="skill-item">
-            <span>Communication</span>
+          <div class="skill-item mb-5">
+            <span class="block mb-2 font-semibold">Communication</span>
             <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
           </div>
         </div>
@@ -140,31 +196,31 @@
   </section>
 
   <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
+  <section id="experience" class="experience py-20">
+    <div class="container mx-auto px-5 max-w-6xl">
       <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">Jan 2025 - Mar 2025</div>
-          <div class="timeline-content">
-            <h3>Course Recommendation Platform</h3>
-            <h4>AI-Powered Platform</h4>
-            <p>Developed an online course platform with AI capabilities and tutor options where users can share knowledge.</p>
+      <div class="timeline relative max-w-4xl mx-auto">
+        <div class="timeline-item py-5 px-10 relative w-full md:w-1/2 box-border md:left-0">
+          <div class="timeline-date md:-right-20 right-auto">Jan 2025 - Mar 2025</div>
+          <div class="timeline-content bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-xl mb-2 text-secondary">Course Recommendation Platform</h3>
+            <h4 class="text-lg mb-4 text-primary font-medium">AI-Powered Platform</h4>
+            <p class="text-textLight">Developed an online course platform with AI capabilities and tutor options where users can share knowledge.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Nov 2024 - Dec 2024</div>
-          <div class="timeline-content">
-            <h3>Investig Financial Platform</h3>
-            <h4>AI-Powered Financial Recommendation</h4>
-            <p>Collaborated with friends to create an AI-powered financial recommendation platform.</p>
+        <div class="timeline-item py-5 px-10 relative w-full md:w-1/2 box-border md:left-1/2">
+          <div class="timeline-date md:-left-20 left-auto">Nov 2024 - Dec 2024</div>
+          <div class="timeline-content bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-xl mb-2 text-secondary">InvestIQ Financial Platform</h3>
+            <h4 class="text-lg mb-4 text-primary font-medium">AI-Powered Financial Recommendation</h4>
+            <p class="text-textLight">Collaborated with friends to create an AI-powered financial recommendation platform.</p>
           </div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Jan 2024 - Mar 2024</div>
-          <div class="timeline-content">
-            <h3>AI/ML Internship</h3>
-            <p>Gained hands-on experience working with Basic-ML models and learned the fundamentals Basics of AI/ML.</p>
+        <div class="timeline-item py-5 px-10 relative w-full md:w-1/2 box-border md:left-0">
+          <div class="timeline-date md:-right-20 right-auto">Jan 2024 - Mar 2024</div>
+          <div class="timeline-content bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-xl mb-2 text-secondary">AI/ML Internship</h3>
+            <p class="text-textLight">Gained hands-on experience working with Basic-ML models and learned the fundamentals Basics of AI/ML.</p>
           </div>
         </div>
       </div>
@@ -172,18 +228,18 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
+  <section id="projects" class="projects py-20">
+    <div class="container mx-auto px-5 max-w-6xl">
       <h2 class="section-title">Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image">
-            <img src="project1.png" alt="Course Platform">
+      <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
+          <div class="project-image h-48 overflow-hidden">
+            <img src="project1.png" alt="Course Platform" class="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110">
           </div>
-          <div class="project-info">
-            <h3>Course Recommendation Platform</h3>
-            <p>AI-powered online learning platform with tutor functionality</p>
-            <div class="project-tech">
+          <div class="project-info p-5">
+            <h3 class="text-xl mb-2 text-secondary">Course Recommendation Platform</h3>
+            <p class="mb-4 text-textLight">AI-powered online learning platform with tutor functionality</p>
+            <div class="project-tech flex flex-wrap gap-2">
               <span>AI</span>
               <span>Web Development</span>
               <span>Database</span>
@@ -191,14 +247,14 @@
           </div>
         </div>
         
-        <div class="project-card">
-          <div class="project-image">
-            <img src="project2.png" alt="Financial Platform">
+        <div class="project-card bg-white rounded-lg overflow-hidden shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-lg">
+          <div class="project-image h-48 overflow-hidden">
+            <img src="project2.png" alt="Financial Platform" class="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110">
           </div>
-          <div class="project-info">
-            <h3>Investig Financial Platform</h3>
-            <p>AI-driven financial recommendation system</p>
-            <div class="project-tech">
+          <div class="project-info p-5">
+            <h3 class="text-xl mb-2 text-secondary">InvestIQ Financial Platform</h3>
+            <p class="mb-4 text-textLight">AI-driven financial recommendation system</p>
+            <div class="project-tech flex flex-wrap gap-2">
               <span>AI</span>
               <span>Finance</span>
               <span>Data Analysis</span>
@@ -210,46 +266,119 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
+  <section id="contact" class="contact py-20">
+    <div class="container mx-auto px-5 max-w-6xl">
       <h2 class="section-title">Get In Touch</h2>
-      <div class="contact-container">
-        <div class="contact-info">
-          <h3>Contact Information</h3>
-          <div class="info-item">
-            <i class="fas fa-phone"></i>
+      <div class="contact-container flex flex-col md:flex-row gap-12">
+        <div class="contact-info flex-1">
+          <h3 class="text-2xl mb-8 text-secondary">Contact Information</h3>
+          <div class="info-item flex items-center mb-5">
+            <i class="fas fa-phone w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4 text-primary"></i>
             <span>+91 9043319174</span>
           </div>
-          <div class="info-item">
-            <i class="fas fa-envelope"></i>
+          <div class="info-item flex items-center mb-5">
+            <i class="fas fa-envelope w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4 text-primary"></i>
             <span>shashinrajkumar@gmail.com</span>
           </div>
-          <div class="info-item">
-            <i class="fab fa-linkedin"></i>
+          <div class="info-item flex items-center mb-5">
+            <i class="fab fa-linkedin w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-4 text-primary"></i>
             <span>linkedin.com/in/shashin-r-985a2a321</span>
           </div>
-          <div class="social-links">
-            <a href="https://github.com/shashin2006"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/shashin-r-985a2a321/"><i class="fab fa-linkedin"></i></a>
+          <div class="social-links flex gap-4 mt-8">
+            <a href="https://github.com/shashin2006" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300 ease-in-out"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/shashin-r-985a2a321/" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-secondary hover:bg-primary hover:text-white transition-all duration-300 ease-in-out"><i class="fab fa-linkedin"></i></a>
           </div>
         </div>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 Shashin R. All Rights Reserved.</p>
-      <div class="footer-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="SHASHIN_RESUME_ORI.pdf" download>Download Resume</a>
+  <footer class="bg-secondary text-white py-8 text-center">
+    <div class="container mx-auto px-5 max-w-6xl">
+      <p class="mb-5">&copy; 2023 Shashin R. All Rights Reserved.</p>
+      <div class="footer-links flex flex-wrap justify-center gap-5">
+        <a href="#home" class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">Home</a>
+        <a href="#about" class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">About</a>
+        <a href="#skills" class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">Skills</a>
+        <a href="#projects" class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">Projects</a>
+        <a href="#contact" class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">Contact</a>
+        <a href="SHASHIN_RESUME_ORI.pdf" download class="text-white no-underline hover:text-primary transition-colors duration-300 ease-in-out">Download Resume</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('open');
+      });
+    });
+
+    // Sticky navbar on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('shadow-md', window.scrollY > 0);
+    });
+
+    // Responsive timeline
+    function adjustTimeline() {
+      const timeline = document.querySelector('.timeline');
+      if (window.innerWidth < 768) {
+        timeline.classList.add('pl-16');
+        timeline.classList.remove('before:left-1/2');
+        timeline.classList.add('before:left-8');
+        
+        document.querySelectorAll('.timeline-item').forEach(item => {
+          item.classList.remove('md:w-1/2');
+          item.classList.remove('md:left-0');
+          item.classList.remove('md:left-1/2');
+        });
+        
+        document.querySelectorAll('.timeline-date').forEach(date => {
+          date.classList.remove('md:-right-20');
+          date.classList.remove('md:-left-20');
+          date.classList.add('-left-10');
+        });
+      } else {
+        timeline.classList.remove('pl-16');
+        timeline.classList.add('before:left-1/2');
+        timeline.classList.remove('before:left-8');
+        
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+          item.classList.add('md:w-1/2');
+          if (index % 2 === 0) {
+            item.classList.add('md:left-0');
+          } else {
+            item.classList.add('md:left-1/2');
+          }
+        });
+        
+        document.querySelectorAll('.timeline-date').forEach((date, index) => {
+          if (index % 2 === 0) {
+            date.classList.add('md:-right-20');
+          } else {
+            date.classList.add('md:-left-20');
+          }
+          date.classList.remove('-left-10');
+        });
+      }
+    }
+
+    // Run on load and resize
+    window.addEventListener('load', adjustTimeline);
+    window.addEventListener('resize', adjustTimeline);
+  </script>
 </body>
 </html>
