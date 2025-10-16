@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claims Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#20578b',
+                        secondary: '#02204d',
+                        accent: '#4a90e2',
+                        light: '#f5f7fa',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-pattern {
+            background: linear-gradient(135deg, #02204d 0%, #02050b 100%);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-number {
+            background: linear-gradient(135deg, #4a90e2 0%, #20578b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center mr-3">
+                    <i class="fas fa-file-medical text-white text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">Claims Portal</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-600 hover:text-primary font-medium">Home</a>
+                <a href="#features" class="text-gray-600 hover:text-primary font-medium">Features</a>
+                <a href="#about" class="text-gray-600 hover:text-primary font-medium">About</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary font-medium">Contact</a>
+            </nav>
+            
+            <div class="flex space-x-4">
+                <button class="px-4 py-2 text-primary font-medium hover:text-primary-dark">Login</button>
+                <button id="signupBtn" class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-secondary transition">Sign Up</button>
+            </div>
+            
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white pt-32 pb-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Streamline your healthcare claims management</h2>
+                <p class="text-xl text-gray-300 mb-8">Our comprehensive portal helps you manage claims efficiently with real-time tracking and analytics.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="px-6 py-3 bg-accent text-white rounded-lg font-medium hover:bg-blue-700 transition shadow-lg">Get Started</button>
+                    <button id="createAccountBtn" class="px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition">Create Account</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-accent opacity-20 rounded-2xl blur-lg"></div>
+                    <div class="relative bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold text-gray-800">Claims Dashboard</h3>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 text-sm rounded-full">Active</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Pending Claims</span>
+                                <span class="font-bold">24</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Approved This Week</span>
+                                <span class="font-bold">18</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Avg Processing Time</span>
+                                <span class="font-bold">2.4 days</span>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-gray-100 rounded-lg p-4">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm text-gray-600">Monthly Performance</span>
+                                <span class="text-sm font-bold text-green-600">+12%</span>
+                            </div>
+                            <div class="w-full bg-gray-300 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="border-t border-gray-300"></div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Our Solutions</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Healthcare Providers Card -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-user-md text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Healthcare Providers</h3>
+                    <p class="text-gray-600 mb-6">Submit and track insurance claims efficiently. Monitor reimbursement status and manage your practice's financial workflow.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Easy claim submission</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Real-time status tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Financial workflow management</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Admin Management Card -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-tasks text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Admin Management</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive oversight of all claims processing. Review, approve, and manage the entire claims lifecycle with advanced analytics.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Complete claims oversight</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Lifecycle management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Advanced analytics</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Real-time Analytics Card -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Real-time Analytics</h3>
+                    <p class="text-gray-600 mb-6">Get insights into claim patterns, approval rates, and financial metrics. Make data-driven decisions for better outcomes.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Claim pattern insights</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Approval rate tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span class="text-gray-600">Financial metrics</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Ready to streamline your claims management?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of healthcare providers who trust our platform for efficient claims processing.</p>
+            <div class="flex justify-center space-x-4">
+                <button class="px-6 py-3 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition shadow-lg">Get Started</button>
+                <button class="px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white hover:text-primary transition">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Claims Portal</h3>
+                    <p class="text-gray-400">Streamlining healthcare claims management for providers and administrators.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Claims Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">Create Account</h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <form id="signupForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="email">Email Address</label>
+                        <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="your.email@example.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="password">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Create a strong password" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2" for="accountType">Account Type</label>
+                        <select id="accountType" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            <option value="provider">Healthcare Provider</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div id="providerIdField" class="">
+                        <label class="block text-gray-700 mb-2" for="providerId">Provider ID</label>
+                        <input type="text" id="providerId" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter your provider ID">
+                    </div>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-gray-600">Already have an account? <a href="#" class="text-primary hover:underline">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const signupBtn = document.getElementById('signupBtn');
+        const createAccountBtn = document.getElementById('createAccountBtn');
+        const signupModal = document.getElementById('signupModal');
+        const closeModal = document.getElementById('closeModal');
+        const accountType = document.getElementById('accountType');
+        const providerIdField = document.getElementById('providerIdField');
+        
+        // Show modal when either button is clicked
+        [signupBtn, createAccountBtn].forEach(button => {
+            button.addEventListener('click', () => {
+                signupModal.classList.remove('hidden');
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            signupModal.classList.add('hidden');
+        });
+        
+        // Close modal when clicking outside
+        signupModal.addEventListener('click', (e) => {
+            if (e.target === signupModal) {
+                signupModal.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide provider ID field based on account type
+        accountType.addEventListener('change', () => {
+            if (accountType.value === 'provider') {
+                providerIdField.classList.remove('hidden');
+            } else {
+                providerIdField.classList.add('hidden');
+            }
+        });
+        
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically handle the form submission to your backend
+            alert('Account creation functionality would connect to your backend API');
+            signupModal.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
